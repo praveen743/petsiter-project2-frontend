@@ -1,24 +1,57 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './sb.css';
+import Register from './Register';
+import Login from './Login';
+import Sidebar from './Sidebar';
+import Topbar from './Topbar';
+import { useState } from 'react';
+import Dashboard from './Dashboard';
+import Customer from './Customer';
+import Worker from './Worker';
+import Myorder from './Myorder';
+import Editorder from './Editorder';
+import Payment from './Payment';
+import Accept from './Accept';
+import Orderstatus from './Orderstatus';
+import Estimate from './Estimate';
+ 
 function App() {
+  const [user,setuser]=useState(null)
+  const [order,setorder]=useState(null)
+  const [bill,setbill] = useState(null)
+  const [hour,sethour] = useState(null)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <div id="wrapper">
+          <Sidebar user={user}/>
+          <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+              <Topbar user={user}/>
+              <div class="container-fluid">
+                <Routes>
+                  <Route path="/" element={<Register />}></Route>
+                  <Route path="/login" element={<Login setuser={setuser}/>}></Route>
+                  <Route path="/dashboard" element={<Dashboard/>}></Route>
+                  <Route path="/customer" element={<Customer user={user} setbill={setbill} hour={hour}/>}></Route>
+                  <Route path="/staff" element={<Worker/>}></Route>
+                  <Route path="/order/:id" element={<Myorder setorder={setorder}/>}></Route>
+                  <Route path="/myorder/:id" element={<Editorder user={user}/>}></Route>
+                  <Route path="/payment" element={<Payment bill={bill}/>}></Route>
+                  <Route path="/accept/:id" element={<Accept/>}></Route>
+                  <Route path="/orderstatus" element={<Orderstatus order={order}/>}></Route>
+                  <Route path="/estimate" element={<Estimate setbill={setbill} sethour={sethour}/>}></Route>
+
+                  </Routes>
+              </div>
+            </div>
+          </div>
+        </div>
+      </BrowserRouter >
     </div>
+
   );
 }
 
