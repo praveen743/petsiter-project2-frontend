@@ -1,6 +1,10 @@
 import react, { useEffect} from "react";
 import axios from "axios";
+import './style.css';
+import { Link } from "react-router-dom";
  
+
+
 export default function Topbar({user}) {
  
     useEffect(async () => {
@@ -8,11 +12,14 @@ export default function Topbar({user}) {
          console.log(userid.data);
          }, [])
     return (
-        <div className="bg-success ml-1" style={{height:'50px',}}>
+        <div className="topbar">
              {/* <nav class="navbar  navbar-expand navbar-light bg-success topbar ml-1 mb-4 static-top shadow">  */}
 
                 <div className="text-right text-light mr-5  ">
-                    <b>{user?user.Username:'login'}</b></div>
+                    <b>{user?<button className="btn" id='profile'>{user}
+                    </button>:
+                   <Link to='/login'> <button className="btn" id='profile'
+                    >Login</button> </Link>}</b></div>
                     
                         {/* </nav> */}
                         

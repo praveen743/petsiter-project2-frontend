@@ -18,7 +18,8 @@ function Login({setuser,settoken}) {
                  window.localStorage.setItem("my_token", data.data.token)
                 console.log(data.data);
                 if (data.data.message == "login") {
-                     setuser(data.data.user);
+                    console.log(data.data.user.email);
+                     setuser(data.data.user.email);
                      navigate("/dashboard");
                 }else{
                     alert("UserID or Password Incorrect :( ")
@@ -44,7 +45,8 @@ function Login({setuser,settoken}) {
                         <div className='col-lg-4'><input type="password" className='form-control'
                             onChange={formik.handleChange} value={formik.values.password} name='password'></input></div>
                     </div>
-                    <div className='col-lg-12 mt-3 text-centrt'><input type="submit" className='btn btn-success' value="Login"></input></div>
+                    <div className='col-lg-12 mt-3 text-centrt'><input type="submit" 
+                    className='btn ' id='paybtn' value="Login"></input></div>
                 </div>
             </form>
         </div>

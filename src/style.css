@@ -1,0 +1,71 @@
+#customsidebar{
+    background-color: #C61A66;
+    
+}
+
+.topbar{
+    background-color: #C61A66;
+}
+
+#ordcontainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+Link{
+    text-decoration: none;
+    color:black;
+}
+
+#xbtn{
+    margin-left: 85%;
+    width: 44px;
+    height: 30px;
+    font-weight: bolder;
+ }
+
+#pynowbtn{
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+#profile{
+    margin-top: 15px;
+    background-color: white;
+    width: 160px;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+
+#ordercardhead{
+    background-color: #C61A66;
+}
+
+#ordercard{
+    background-color: #C61A66;
+    margin-top: 50px;
+    margin-right: 25px;
+}
+
+.payform{
+    margin-top: 15%;
+}
+
+#paybtn{
+    background-color: #C61A66;
+color: white;
+}
+
+#dashbtn{
+    background-color: #C61A66;
+    width: 100%;
+    height:500px;
+    color: white;
+    font-size: 50px;
+     font-weight: bolder;
+}
+
+.dashtext{
+    margin-top: 40%;
+}

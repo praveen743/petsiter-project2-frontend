@@ -4,23 +4,26 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './style.css'
 
-function Myorder({setorder}) {
-  const [orderarr, setorderarr] = useState([]);
+function Myorder({setorder,setbill}) {
+ const [orderarr, setorderarr] = useState([]);
   var params = useParams();
   useEffect(async () => {
     fetchUsers()
-    
-  }, [])
+    }, [])
 
   let fetchUsers = async () => {
     try {
-        let order = await axios.get(`http://localhost:3003/order/${params.id}`,{
+        let order = await axios.get(`http://localhost:3003/notpayed/${params.id}`,{
           headers:{
             Authorization:  window.localStorage.getItem("my_token")
           }
         });
+       
         setorderarr(order.data)
+        console.log(order.data)
+        console.log(orderarr)
     } catch (error) {
         console.log(error)
     }
@@ -37,16 +40,30 @@ function Myorder({setorder}) {
         console.log(error)
     }
 }
+
+let calculate = async (id) => {
+  try {
+      var orderinfo = await axios.get(`http://localhost:3003/myorder/${id}`,{
+        headers: {
+            Authorization: window.localStorage.getItem("my_token")
+        },
+})
+console.log((orderinfo.data[0].hours)*50)
+setbill((orderinfo.data[0].hours)*50 )      
+} catch (error) {
+      console.log(error)
+  }
+}
+
   return (
     <>
-      <div>Myorder</div>
+      <div className='container' id='ordcontainer'>
       {
         orderarr.map((obj) => {
-          return <div className='container '>
-            {setorder(obj._id)}
-            <div class="card text-white bg-success mb-3 d-flex flex-wrap"
+          {setorder(obj._id)}
+          return <div class="card text-white" id='ordercard'
               style={{ width: "18rem" }}>
-              <div class="card-header text-white bg-success"
+              <div class="card-header text-white" id='ordercardhead'
                 style={{ textTransform: "uppercase" }}><b>{obj.pettype}</b></div>
               <div class="card-body">
                 <h5 class="card-title" style={{ textTransform: "uppercase" }}>
@@ -57,12 +74,15 @@ function Myorder({setorder}) {
                 {console.log(obj._id)}
                <Link to={`/myorder/${obj._id}`}><button  className='btn btn-sm btn-light mr-2'><b>Edit</b></button></Link>
                 <button onClick={() => handleDelete(obj._id)} className='btn btn-sm btn-light ml-2'><b>Delete</b></button>
+                <Link to={`/payment/${obj._id}`}> 
+                                  <button className='btn btn-sm btn-light'
+                                     id='pynowbtn'    onClick={() => calculate(obj._id)}
+                                    >Pay Now</button></Link> 
               </div>
             </div>
-          </div>
-        })
+           })
       }
-
+</div>
     </>
 
   )

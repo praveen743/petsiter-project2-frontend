@@ -1,19 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './style.css'
 
 function Dashboard() {
     return (
         <>
-
-            <h1>Dashboard</h1>
-            <div className='container'>
+ <div className='container'>
                 <div className='row mt-5'>
                     <div className='col-6'>
-                   <Link to="/estimate" className='btn btn-lg btn-success btn-block'>need a caretaker</Link>
+                   <Link to="/customer" className='btn' id='dashbtn'>
+                     <p className='dashtext'>Need A Caretaker</p>  </Link>
                     </div>
                     <div className='col-6'>
-                    <Link to="/staff" className='btn btn-lg btn-success  btn-block'>be a caretaker</Link>
+                    <Link to="/staff" className='btn' id='dashbtn'>
+                       <p className='dashtext'> Be A Caretaker</p></Link>
                     </div>
                 </div>
             </div>

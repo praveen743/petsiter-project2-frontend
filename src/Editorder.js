@@ -76,7 +76,8 @@ function Editorder({user}) {
              onChange={formik.handleChange} value={formik.values.pincode} name='pincode'></input></div>
           </div>
 
-          <div className='col-lg-12 mt-3 text-centrt'><input type="submit" className='btn btn-success' value="SUBMIT"></input></div>
+          <div className='col-lg-12 mt-3 text-centrt'>
+            <input type="submit" className='btn' id='paybtn' value="SUBMIT"></input></div>
         </div>
       </form>
     </div>

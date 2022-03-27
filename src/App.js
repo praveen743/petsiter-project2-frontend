@@ -16,6 +16,7 @@ import Payment from './Payment';
 import Accept from './Accept';
 import Orderstatus from './Orderstatus';
 import Estimate from './Estimate';
+import Confirmorder from './Confirmorder';
  
 function App() {
   const [user,setuser]=useState(null)
@@ -35,15 +36,15 @@ function App() {
                   <Route path="/" element={<Register />}></Route>
                   <Route path="/login" element={<Login setuser={setuser}/>}></Route>
                   <Route path="/dashboard" element={<Dashboard/>}></Route>
-                  <Route path="/customer" element={<Customer user={user} setbill={setbill} hour={hour}/>}></Route>
+                  <Route path="/customer" element={<Customer user={user}    />}></Route>
                   <Route path="/staff" element={<Worker/>}></Route>
-                  <Route path="/order/:id" element={<Myorder setorder={setorder}/>}></Route>
+                  <Route path="/order/:id" element={<Myorder setorder={setorder} setbill={setbill}/>}></Route>
                   <Route path="/myorder/:id" element={<Editorder user={user}/>}></Route>
-                  <Route path="/payment" element={<Payment bill={bill}/>}></Route>
-                  <Route path="/accept/:id" element={<Accept/>}></Route>
-                  <Route path="/orderstatus" element={<Orderstatus order={order}/>}></Route>
+                  <Route path="/payment/:id" element={<Payment bill={bill}/>}></Route>
+                  <Route path="/accept/:id" element={<Accept user={user}/>}></Route>
+                  <Route path="/orderstatus" element={<Orderstatus user={user} />}></Route>
                   <Route path="/estimate" element={<Estimate setbill={setbill} sethour={sethour}/>}></Route>
-
+                  <Route path="/confirmorder/:id" element={<Confirmorder setbill={setbill} sethour={sethour}/>}></Route>
                   </Routes>
               </div>
             </div>
