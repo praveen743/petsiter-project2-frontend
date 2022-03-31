@@ -57,12 +57,14 @@ setbill((orderinfo.data[0].hours)*50 )
 
   return (
     <>
+          <div id='pghd'>Pay now to confirm your orders </div>
+
       <div className='container' id='ordcontainer'>
       {
         orderarr.map((obj) => {
           {setorder(obj._id)}
           return <div class="card text-white" id='ordercard'
-              style={{ width: "18rem" }}>
+             >
               <div class="card-header text-white" id='ordercardhead'
                 style={{ textTransform: "uppercase" }}><b>{obj.pettype}</b></div>
               <div class="card-body">
@@ -72,11 +74,13 @@ setbill((orderinfo.data[0].hours)*50 )
                 <p class="card-text"><b>{`City: ${obj.city}`}</b></p>
                 <p class="card-text"><b>{`Pincode: ${obj.pincode}`}</b></p>
                 {console.log(obj._id)}
-               <Link to={`/myorder/${obj._id}`}><button  className='btn btn-sm btn-light mr-2'><b>Edit</b></button></Link>
-                <button onClick={() => handleDelete(obj._id)} className='btn btn-sm btn-light ml-2'><b>Delete</b></button>
+               <Link to={`/myorder/${obj._id}`}><button  className='btn btn-sm btn-light' id='edbtn'>
+                 <b>Edit</b></button></Link>
+                <button onClick={() => handleDelete(obj._id)} className='btn btn-sm btn-light
+                 ' id='edbtn'><b>Delete</b></button>
                 <Link to={`/payment/${obj._id}`}> 
                                   <button className='btn btn-sm btn-light'
-                                     id='pynowbtn'    onClick={() => calculate(obj._id)}
+                                     id='pynwbtn'    onClick={() => calculate(obj._id)}
                                     >Pay Now</button></Link> 
               </div>
             </div>

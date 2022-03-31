@@ -5,8 +5,8 @@ import './style.css'
 
 function Dashboard() {
     return (
-        <>
- <div className='container'>
+        
+ <div className='container' id='dshcont'>
                 <div className='row mt-5'>
                     <div className='col-6'>
                    <Link to="/customer" className='btn' id='dashbtn'>
@@ -19,8 +19,7 @@ function Dashboard() {
                 </div>
             </div>
 
-        </>
-
+ 
     )
 }
 

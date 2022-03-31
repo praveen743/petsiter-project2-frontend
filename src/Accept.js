@@ -51,26 +51,26 @@ function Accept({user}) {
     }
   })
   return (
-    <div>
+    <div id='acptbd'>
       <h4>Order Acceptence Form</h4>
 
       <form onSubmit={formik.handleSubmit}>
-        <div className='container'>
+        <div className='container '>
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>Name:</b></label></div>
-            <div className='col-lg-4'><input type="text" className='form-control'
+            <div className='col-lg-4'><input type="text" required className='form-control'
               onChange={formik.handleChange} value={formik.values.assignedto} name='assignedto'></input></div>
           </div>
 
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>EmployeID:</b></label></div>
-            <div className='col-lg-4'><input type="text" className='form-control'
+            <div className='col-lg-4'><input type="text" required className='form-control'
               onChange={formik.handleChange} value={formik.values.employid} name='employid'></input></div>
           </div>
 
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>Whatsapp Number:</b></label></div>
-            <div className='col-lg-4'><input type="tel" pattern="[0-9]{10}"
+            <div className='col-lg-4'><input type="tel"  required pattern="[0-9]{10}"
              className='form-control'
               onChange={formik.handleChange} value={formik.values.whatsappnum} name='whatsappnum'></input></div>
           </div>

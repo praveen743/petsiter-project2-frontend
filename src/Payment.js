@@ -36,7 +36,7 @@ console.log(bill);
           address:"Razorpay Corporate office"
         },
         theme: {
-          color:"#C61A66"
+          color:"#000000"
         }
       };
       var pay = new window.Razorpay(options);
@@ -46,12 +46,12 @@ console.log(bill);
     }
   }
   return (
-    <div className="App">
+    <div className="App" id='pymtcntnr'>
       
      <br/>
      <input className='text-center' type="text" placeholder='Enter Amount' value={amount}onChange={(e)=>setamount(e.target.value)} />
      <br/><br/>
-     <button className='btn' id='paybtn' onClick={handleSubmit}>{`PAY ${bill}`}</button>
+     <button className='btn shawdow-none' id='paybtn' onClick={handleSubmit}>{`PAY ${bill}`}</button>
     </div>
   );
 }

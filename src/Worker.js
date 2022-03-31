@@ -14,7 +14,7 @@ function Worker() {
   }, [])
   return (
     <>
-      <div>Available Orders</div>
+      <div id='pghd'>Available Orders</div>
       <div className='container' id='ordcontainer'>
       {
        
@@ -30,8 +30,8 @@ function Worker() {
                 <p class="card-text"><b>{`City: ${obj.city}`}</b></p>
                 <p class="card-text"><b>{`Pincode: ${obj.pincode}`}</b></p>
                 <div className='col-lg-12 mt-3 text-center'>
-                <Link to={`/accept/${obj._id}`}>  <input type="button" 
-                className='btn btn-light font-weight-bold'  
+                <Link to={`/accept/${obj._id}`}>  <input type="button"  id='acptbtn'
+                className='btn btn-light '  
                  value="Accept"></input></Link>
               </div>
             </div>

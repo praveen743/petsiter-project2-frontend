@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './sb.css';
+// import './sb.css';
 import Register from './Register';
 import Login from './Login';
 import Sidebar from './Sidebar';
@@ -17,6 +17,7 @@ import Accept from './Accept';
 import Orderstatus from './Orderstatus';
 import Estimate from './Estimate';
 import Confirmorder from './Confirmorder';
+import background from "./images/bgimage1.jpg";
  
 function App() {
   const [user,setuser]=useState(null)
@@ -24,14 +25,14 @@ function App() {
   const [bill,setbill] = useState(null)
   const [hour,sethour] = useState(null)
   return (
-    <div className="App">
-      <BrowserRouter>
+    <div className="App"   id='bckgrd'>
+       <BrowserRouter>
         <div id="wrapper">
-          <Sidebar user={user}/>
-          <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-              <Topbar user={user}/>
-              <div class="container-fluid">
+           {/* <Sidebar user={user}/> */}
+           <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content"> 
+               <Topbar user={user}/> 
+                <div class="container-fluid">
                 <Routes>
                   <Route path="/" element={<Register />}></Route>
                   <Route path="/login" element={<Login setuser={setuser}/>}></Route>
@@ -49,10 +50,11 @@ function App() {
               </div>
             </div>
           </div>
-        </div>
-      </BrowserRouter >
-    </div>
+        </div>  
+        </BrowserRouter>
 
+    </div>
+ 
   );
 }
 

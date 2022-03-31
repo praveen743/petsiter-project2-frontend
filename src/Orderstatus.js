@@ -39,6 +39,8 @@ function Orderstatus({user} ) {
 
   return (
     <>
+              <div id='pghd'>Confirmed Orders </div>
+
        <div className='container ' id='ordcontainer'>
       {
         orderstatus.map((obj,index) => {

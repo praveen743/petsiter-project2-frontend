@@ -1,7 +1,16 @@
-
-
-.App {
+ .App {
   text-align: center;
+}
+
+
+body{
+  background-image: url('./images/bgimage1.jpg');
+  /* Full height */
+ height: 100%; 
+
+ /* Center and scale the image nicely */
+  
+ background-size: cover;
 }
 
 .App-logo {

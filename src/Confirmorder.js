@@ -25,7 +25,7 @@ function Confirmorder() {
 
     
   return (
-    <div>Loading...</div>
+    <div style={{backgroundcolor:'black'}}>Loading...</div>
   )
 }
  

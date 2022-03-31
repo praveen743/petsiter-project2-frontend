@@ -31,7 +31,7 @@ function Login({setuser,settoken}) {
         }
     })
     return (
-        <div>
+        <div id='logncont'>
             <h2 className='mt-5'>LOGIN</h2>
             <form onSubmit={formik.handleSubmit}>
                 <div className='container'>
