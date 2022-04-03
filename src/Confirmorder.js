@@ -15,7 +15,7 @@ function Confirmorder() {
 
       let confirmorder = async () => {
         try {
-          let itemdetials = await axios.put(`http://localhost:3003/confirmorder/${params.id}`);
+          let itemdetials = await axios.put(`https://petsitter-project2-backend.herokuapp.com/confirmorder/${params.id}`);
             alert('/Now the order is confirmed and shown for caretakers go to BE A CARETAKER section and accept order.')
           navigate('/dashboard')
            
