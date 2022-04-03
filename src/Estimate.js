@@ -20,7 +20,7 @@ function Estimate({ setbill,sethour }) {
         onSubmit: async (values) => {
             try {
                
-                let data = await axios.post("http://localhost:3003/payment", values)
+                let data = await axios.post("https://petsitter-project2-backend.herokuapp.com/payment", values)
                 
             } catch (error) {
                 console.log(error)
