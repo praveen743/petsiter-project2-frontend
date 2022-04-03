@@ -16,7 +16,7 @@ var navigate = useNavigate();
   async function fetch() {
     try{
       if(user!==null){
-        var orderdata = await axios.get(`http://localhost:3003/payeduser/${user}`,{
+        var orderdata = await axios.get(`https://petsitter-project2-backend.herokuapp.com/payeduser/${user}`,{
           headers:{
             Authorization:  window.localStorage.getItem("my_token")
           }
@@ -40,7 +40,7 @@ navigate('/login')
     try {
         let result = window.confirm("Are you sure do you want to delete?")
         if (result) {
-            await axios.delete(`http://localhost:3003/order${id}` )
+            await axios.delete(`https://petsitter-project2-backend.herokuapp.com/order${id}` )
             fetch()
         }
     } catch (error) {
