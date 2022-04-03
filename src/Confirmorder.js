@@ -16,7 +16,8 @@ function Confirmorder() {
       let confirmorder = async () => {
         try {
           let itemdetials = await axios.put(`http://localhost:3003/confirmorder/${params.id}`);
-            navigate('/dashboard')
+            alert('/Now the order is confirmed and shown for caretakers go to BE A CARETAKER section and accept order.')
+          navigate('/dashboard')
            
         } catch (error) {
           console.log(error)

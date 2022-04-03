@@ -2,11 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './style.css'
 
-function Myorder({setorder,setbill}) {
+function Myorder({setorder,setbill,user}) {
+  var navigate = useNavigate();
  const [orderarr, setorderarr] = useState([]);
   var params = useParams();
   useEffect(async () => {
@@ -15,15 +16,21 @@ function Myorder({setorder,setbill}) {
 
   let fetchUsers = async () => {
     try {
-        let order = await axios.get(`http://localhost:3003/notpayed/${params.id}`,{
-          headers:{
-            Authorization:  window.localStorage.getItem("my_token")
-          }
-        });
-       
-        setorderarr(order.data)
-        console.log(order.data)
-        console.log(orderarr)
+        if(user!==null){
+          let order = await axios.get(`http://localhost:3003/notpayed/${params.id}`,{
+            headers:{
+              Authorization:  window.localStorage.getItem("my_token")
+            }
+          });
+         
+          setorderarr(order.data)
+          console.log(order.data)
+          console.log(orderarr)
+        }else{
+          alert('Login to See ');
+          navigate('/login')
+        }
+        
     } catch (error) {
         console.log(error)
     }
@@ -61,9 +68,9 @@ setbill((orderinfo.data[0].hours)*50 )
 
       <div className='container' id='ordcontainer'>
       {
-        orderarr.map((obj) => {
+        orderarr.map((obj,index) => {
           {setorder(obj._id)}
-          return <div class="card text-white" id='ordercard'
+          return <div class="card text-white" id='ordercard' key={index}
              >
               <div class="card-header text-white" id='ordercardhead'
                 style={{ textTransform: "uppercase" }}><b>{obj.pettype}</b></div>

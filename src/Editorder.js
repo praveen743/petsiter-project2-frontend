@@ -48,31 +48,32 @@ function Editorder({user}) {
         <div className='container'>
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>Pet Type:</b></label></div>
-            <div className='col-lg-4'><input type="text" className='form-control' placeholder="dogs,cats,birds..."
+            <div className='col-lg-4'><input type="text" className='form-control' required
+             placeholder="dogs,cats,birds..."
               onChange={formik.handleChange} value={formik.values.pettype} name='pettype'></input></div>
           </div>
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>Pet Breed:</b></label></div>
-            <div className='col-lg-4'><input type="text" className='form-control'
+            <div className='col-lg-4'><input type="text" className='form-control'required
              placeholder="beagle,labrador..."
               onChange={formik.handleChange} value={formik.values.petbreed} name='petbreed'></input></div>
           </div>
           
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>Number Of Hours:</b></label></div>
-            <div className='col-lg-4'><input type="number" className='form-control'
+            <div className='col-lg-4'><input type="number" className='form-control' required
               
               onChange={formik.handleChange} value={formik.values.hours} name='hours'></input></div>
           </div>
 
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>City:</b></label></div>
-            <div className='col-lg-4'><input type="text" className='form-control'
+            <div className='col-lg-4'><input type="text" className='form-control' required
              onChange={formik.handleChange} value={formik.values.city} name='city'></input></div>
           </div>
           <div className='row mt-4'>
             <div className='col-lg-4 text-right align-self-center'><label><b>Pincode:</b></label></div>
-            <div className='col-lg-4'><input type="text" className='form-control'
+            <div className='col-lg-4'><input type="text" className='form-control' required
              onChange={formik.handleChange} value={formik.values.pincode} name='pincode'></input></div>
           </div>
 

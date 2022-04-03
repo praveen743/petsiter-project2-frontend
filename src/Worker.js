@@ -2,24 +2,40 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './style.css'
 
-function Worker() {
+function Worker({user}) {
+  var navigate = useNavigate();
   const [orderarr, setorderarr] = useState([]);
-  useEffect(async () => {
-    var order = await axios.get('http://localhost:3003/workorders');
-    console.log(order.data);
-    setorderarr(order.data);
-  }, [])
+  try{
+    useEffect(async () => {
+      if(user!== null){
+        var order = await axios.get('http://localhost:3003/workorders',{
+          headers: {
+              Authorization: window.localStorage.getItem("my_token")
+          },
+      });
+        console.log(order.data);
+        setorderarr(order.data);
+      }else{
+        alert('Login to See ');
+        navigate('/login')
+      }
+         
+        }, [])
+  }catch (error) {
+    console.log(error)
+}
+ 
   return (
     <>
       <div id='pghd'>Available Orders</div>
       <div className='container' id='ordcontainer'>
       {
        
-        orderarr.map((obj) => {
-          return <div class="card text-white " id='ordercard'
+        orderarr.map((obj,index) => {
+          return <div class="card text-white " id='ordercard' key={index}
               style={{ width: "18rem" }}>
               <div class="card-header text-white" id='ordercardhead'
                 style={{ textTransform: "uppercase" }}><b>{obj.pettype}</b></div>

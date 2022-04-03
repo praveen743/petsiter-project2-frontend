@@ -7,21 +7,32 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import './style.css'
 
 function Orderstatus({user} ) {
-
+var navigate = useNavigate();
   const [orderstatus, setorderstatus] = useState([]);
   useEffect(async () => {
     fetch()
   }, [])
 
   async function fetch() {
-    var orderdata = await axios.get(`http://localhost:3003/payeduser/${user}`,{
-      headers:{
-        Authorization:  window.localStorage.getItem("my_token")
+    try{
+      if(user!==null){
+        var orderdata = await axios.get(`http://localhost:3003/payeduser/${user}`,{
+          headers:{
+            Authorization:  window.localStorage.getItem("my_token")
+          }
+        });
+         console.log(orderdata.data)
+        setorderstatus(orderdata.data);
+      }else{
+        alert('login to see')
+navigate('/login')
       }
-    });
-     console.log(orderdata.data)
-    setorderstatus(orderdata.data);
+      
+    }catch(error){
+      console.log(error)
+    }
   }
+    
 
    
 

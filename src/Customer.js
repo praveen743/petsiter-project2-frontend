@@ -2,12 +2,31 @@ import React from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { Navigate, useNavigate } from 'react-router-dom';
-import './style.css'
+import './style.css';
+import { useEffect } from 'react';
  
   
 function Customer({user,hour}) {
   
    var navigate = useNavigate();
+   useEffect(async () => {
+    fetchUsers()
+    }, [])
+
+  let fetchUsers = async () => {
+    try {
+        if(user===null){
+          alert('Login to See ');
+          navigate('/login')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+
   const formik = useFormik({
     initialValues: {
       username:user,
@@ -27,7 +46,7 @@ function Customer({user,hour}) {
         console.log(values);
         let data = await axios.post("http://localhost:3003/customer", values)
         alert(data.data.message);
-        navigate(`/dashboard`);
+        navigate(`/order/${user}`);
 
       } catch (error) {
         console.log(error)

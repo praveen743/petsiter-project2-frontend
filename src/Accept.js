@@ -17,6 +17,7 @@ function Accept({user}) {
         console.log(params.id);
         let itemdetials = await axios.get(`http://localhost:3003/myorder/${params.id}`);
         console.log(itemdetials.data[0]);
+        formik.setFieldValue('username',itemdetials.data[0].username)
       formik.setFieldValue('pettype',itemdetials.data[0].pettype)
       formik.setFieldValue('petbreed',itemdetials.data[0].petbreed)
       formik.setFieldValue('hours',itemdetials.data[0].hours)
@@ -28,7 +29,7 @@ function Accept({user}) {
 }
   const formik = useFormik({
     initialValues: {
-      username:user,
+      username:'',
       pettype:'',
       petbreed:'',
       hours: '',
@@ -44,7 +45,8 @@ function Accept({user}) {
       try {
         console.log(values);
         let data = await axios.put(`http://localhost:3003/accept/${params.id}`, values)
-        navigate('/dashboard');
+        
+        navigate('/orderstatus');
       } catch (error) {
         console.log(error)
       }

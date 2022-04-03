@@ -31,15 +31,16 @@ function App() {
            {/* <Sidebar user={user}/> */}
            <div id="content-wrapper" class="d-flex flex-column">
             <div id="content"> 
-               <Topbar user={user}/> 
+               <Topbar user={user} setuser={setuser}/> 
                 <div class="container-fluid">
                 <Routes>
                   <Route path="/" element={<Register />}></Route>
                   <Route path="/login" element={<Login setuser={setuser}/>}></Route>
                   <Route path="/dashboard" element={<Dashboard/>}></Route>
                   <Route path="/customer" element={<Customer user={user}    />}></Route>
-                  <Route path="/staff" element={<Worker/>}></Route>
-                  <Route path="/order/:id" element={<Myorder setorder={setorder} setbill={setbill}/>}></Route>
+                  <Route path="/staff" element={<Worker user={user}/>}></Route>
+                  <Route path="/order/:id" element={<Myorder setorder={setorder} user={user}
+                   setbill={setbill}/>}></Route>
                   <Route path="/myorder/:id" element={<Editorder user={user}/>}></Route>
                   <Route path="/payment/:id" element={<Payment bill={bill}/>}></Route>
                   <Route path="/accept/:id" element={<Accept user={user}/>}></Route>

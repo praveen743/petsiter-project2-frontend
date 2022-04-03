@@ -3,15 +3,33 @@ import axios from "axios";
 import './style.css';
 import './my.css';
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
  
 
 
-export default function Topbar({user}) {
- 
+export default function Topbar({user,setuser}) {
+ var navigate = useNavigate();
     useEffect(async () => {
-         var userid = await axios.get("http://localhost:3003/login");
-         console.log(userid.data);
+          setuser(window.localStorage.getItem("useremail"));
+         
          }, [])
+
+         let handleLogout = async () => {
+            try {
+                let result = window.confirm("Are you sure do you want to Logout?")
+                if (result) {
+                     
+                  setuser(null);
+                  window.localStorage.setItem("my_token", null);
+                 window.localStorage.setItem("useremail", null);
+                  navigate('/login')
+        
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
     return (
         <div  >
  
@@ -28,7 +46,11 @@ export default function Topbar({user}) {
          id='blink_me'>Sign In</button></Link> }
       
       {/* <Link to='/login' style={{textDecoration: 'none'}}> <button className="btn btn-md shadow-none" id='tpbtn'>Sign in</button> </Link> */}
-      <Link to='/' style={{textDecoration: 'none'}}> <button className="btn btn-md shadow-none" id='tpbtn'>sign up</button> </Link>
+      <Link to='/' style={{textDecoration: 'none'}}>
+           <button className="btn btn-md shadow-none" id='tpbtn'>sign up</button> </Link>
+      
+      <button className="btn btn-md shadow-none"  onClick={() => handleLogout()} id='tpbtn'>
+          Logout</button>
        </span>
   </div>
 
