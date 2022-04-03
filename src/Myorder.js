@@ -17,7 +17,7 @@ function Myorder({setorder,setbill,user}) {
   let fetchUsers = async () => {
     try {
         if(user!==null){
-          let order = await axios.get(`http://localhost:3003/notpayed/${params.id}`,{
+          let order = await axios.get(`https://petsitter-project2-backend.herokuapp.com/notpayed/${params.id}`,{
             headers:{
               Authorization:  window.localStorage.getItem("my_token")
             }
@@ -40,7 +40,7 @@ function Myorder({setorder,setbill,user}) {
     try {
         let result = window.confirm("Are you sure do you want to delete?")
         if (result) {
-            await axios.delete(`http://localhost:3003/order${id}` )
+            await axios.delete(`https://petsitter-project2-backend.herokuapp.com/order${id}` )
             fetchUsers()
         }
     } catch (error) {
@@ -50,7 +50,7 @@ function Myorder({setorder,setbill,user}) {
 
 let calculate = async (id) => {
   try {
-      var orderinfo = await axios.get(`http://localhost:3003/myorder/${id}`,{
+      var orderinfo = await axios.get(`https://petsitter-project2-backend.herokuapp.com/myorder/${id}`,{
         headers: {
             Authorization: window.localStorage.getItem("my_token")
         },
