@@ -44,7 +44,7 @@ function Customer({user,hour}) {
     onSubmit: async (values) => {
       try {
         console.log(values);
-        let data = await axios.post("http://localhost:3003/customer", values)
+        let data = await axios.post("https://petsitter-project2-backend.herokuapp.com/customer", values)
         alert(data.data.message);
         navigate(`/order/${user}`);
 
