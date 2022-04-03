@@ -11,7 +11,7 @@ function Worker({user}) {
   try{
     useEffect(async () => {
       if(user!== null){
-        var order = await axios.get('http://localhost:3003/workorders',{
+        var order = await axios.get('https://petsitter-project2-backend.herokuapp.com/workorders',{
           headers: {
               Authorization: window.localStorage.getItem("my_token")
           },
