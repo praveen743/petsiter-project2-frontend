@@ -15,7 +15,7 @@ function Accept({user}) {
   let fetchitem = async () => {
     try {
         console.log(params.id);
-        let itemdetials = await axios.get(`http://localhost:3003/myorder/${params.id}`);
+        let itemdetials = await axios.get(`https://petsitter-project2-backend.herokuapp.com/myorder/${params.id}`);
         console.log(itemdetials.data[0]);
         formik.setFieldValue('username',itemdetials.data[0].username)
       formik.setFieldValue('pettype',itemdetials.data[0].pettype)
@@ -44,7 +44,7 @@ function Accept({user}) {
     onSubmit: async (values) => {
       try {
         console.log(values);
-        let data = await axios.put(`http://localhost:3003/accept/${params.id}`, values)
+        let data = await axios.put(`https://petsitter-project2-backend.herokuapp.com/accept/${params.id}`, values)
         
         navigate('/orderstatus');
       } catch (error) {
