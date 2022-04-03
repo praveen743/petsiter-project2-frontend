@@ -8,7 +8,7 @@ function Editorder({user}) {
     let params = useParams()
     // const [value,setValues]= useState();
     useEffect(async () => {
-        let userData = await axios.get(`http://localhost:3003/myorder/${params.id}`);
+        let userData = await axios.get(`https://petsitter-project2-backend.herokuapp.com/myorder/${params.id}`);
         console.log(userData.data[0]);
         // setValues(userData.data[0])
         formik.setFieldValue('pettype',userData.data[0].pettype)
@@ -30,7 +30,7 @@ function Editorder({user}) {
         },
         onSubmit: async (values) => {
             try {
-               var res= await axios.put(`http://localhost:3003/order/${params.id}`,values)
+               var res= await axios.put(`https://petsitter-project2-backend.herokuapp.com/order/${params.id}`,values)
                console.log(values);
                alert("order edited");
                 navigate('/dashboard');
